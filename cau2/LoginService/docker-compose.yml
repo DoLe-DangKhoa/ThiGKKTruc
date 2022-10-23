@@ -1,0 +1,32 @@
+version: "3"
+services:
+  #chay mysql truoc roi moi toi springboot app--dangkhoa
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    volumes:
+      -  mysql-data:/var/lib/mysql
+      - ./obo.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: registerdb
+      MYSQL_ROOT_PASSWORD: khoa123
+  springboot-app:
+
+    # container_name: spring-app
+    #ten image
+    image: docker-spring-boot-jpa:latest
+    restart: always
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysqldb
+    environment:
+      MYSQL_HOST: mysqldb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: khoa123
+      MYSQL_PORT: 3306
+volumes:
+  mysql-data:
