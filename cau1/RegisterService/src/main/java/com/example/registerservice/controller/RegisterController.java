@@ -26,16 +26,13 @@ public class RegisterController {
         return  new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @GetMapping("/findbyregisterid/{id}")
+    @GetMapping("/findbyregisterusername/{id}")
     public ResponseEntity<Object> findById(@PathVariable("id") String id){
         List<Register> list= registerService.getById(id);
         return  new ResponseEntity<>(list, HttpStatus.OK);
     }
-    @GetMapping("/findbyregisterid/{username}")
-    public ResponseEntity<Object> findByUsername(@PathVariable("username") String username){
-        String list= registerService.getByUsername(username);
-        return  new ResponseEntity<>(list, HttpStatus.OK);
-    }
+
+
 
 
 }

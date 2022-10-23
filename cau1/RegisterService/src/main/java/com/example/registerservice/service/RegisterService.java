@@ -13,6 +13,5 @@ public interface RegisterService {
     @Query("select sj from Register sj where sj.userId=?1")
     List<Register> getById(String id);
 
-    @Query("select sj from Register sj where sj.username like 'sa'")
-    String getByUsername(String username);
+
 }

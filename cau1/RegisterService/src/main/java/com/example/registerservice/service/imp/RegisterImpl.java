@@ -34,10 +34,7 @@ public class RegisterImpl implements RegisterService {
         return registerRepository.getById(id);
     }
 
-    @Override
-    public String getByUsername(String username) {
-        return "co username";
-    }
+
 
 
 }
